@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#4d201c">
+    <title>
+      The Moment — Kanye West
+    </title>
+    <style>
+      /* Основные цвета страницы: измените значения здесь. */
+      :root {
+        --ink:#382720;
+        --wine:#6e2525;
+        --paper:#f3e8d2;
+        --gold:#bd8845;
+      }
+      * {
+        box-sizing:border-box;
+      }
+      html {
+        scroll-behavior:smooth;
+      }
+      body {
+        margin:0;
+        background:#e3d2b5;
+        color:var(--ink);
+        font-family:Georgia,serif;
+      }
+      body:before {
+        content:"";
+        position:fixed;
+        inset:0;
+        pointer-events:none;
+        opacity:.12;
+        background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+        z-index:4;
+      }
+      .wrap {
+        max-width:1280px;
+        margin:auto;
+        padding:0 6%;
+      }
+      .top {
+        background:#4b211f;
+        color:#efe0c7;
+        border-bottom:5px solid #b88a53;
+      }
+      .top .wrap {
+        min-height:70px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:20px;
+      }
+      .brand {
+        font:bold 12px Arial,sans-serif;
+        letter-spacing:.23em;
+      }
+      .nav {
+        font:11px Arial,sans-serif;
+        letter-spacing:.14em;
+        color:#d5bb96;
+        text-transform:uppercase;
+      }
+      .nav a {
+        color:inherit;
+        text-decoration:none;
+      }
+      /* Верхний блок страницы */
+      .hero {
+        position:relative;
+        overflow:hidden;
+        background:#6b2925;
+        color:#f8edd9;
+      }
+      .hero:after {
+        content:'';
+        position:absolute;
+        width:540px;
+        height:540px;
+        border:1px solid #d8ae7055;
+        border-radius:50%;
+        right:-70px;
+        top:-180px;
+        box-shadow:0 0 0 35px #d8ae7012,0 0 0 75px #d8ae7012,0 0 0 115px #d8ae7010;
+      }
+      .hero .wrap {
+        position:relative;
+        z-index:1;
+        padding-top:72px;
+        padding-bottom:76px;
+      }
+      .eyebrow,.label {
+        font:700 11px Arial,sans-serif;
+        letter-spacing:.2em;
+        text-transform:uppercase;
+      }
+      .eyebrow {
+        color:#e0bd83;
+        display:flex;
+        align-items:center;
+        gap:13px;
+      }
+      .eyebrow:before {
+        content:'';
+        width:35px;
+        height:1px;
+        background:#e0bd83;
+      }
+      h1 {
+        font-size:clamp(60px,10vw,130px);
+        line-height:.88;
+        letter-spacing:-.06em;
+        font-weight:normal;
+        margin:28px 0 20px;
+        max-width:900px;
+      }
+      h1 em {
+        color:#e0bd83;
+        font-weight:normal;
+      }
+      .sub {
+        font-size:clamp(16px,2vw,20px);
+        line-height:1.6;
+        color:#e8d4bb;
+        max-width:570px;
+        margin:0;
+      }
+      .hero-bottom {
+        display:flex;
+        align-items:end;
+        justify-content:space-between;
+        margin-top:54px;
+        gap:20px;
+      }
+      .button {
+        display:inline-flex;
+        align-items:center;
+        gap:35px;
+        color:#4a2822;
+        background:#eddcbd;
+        padding:17px 22px;
+        text-decoration:none;
+        font:700 11px Arial,sans-serif;
+        letter-spacing:.13em;
+        text-transform:uppercase;
+        transition:.2s;
+      }
+      .button:hover {
+        background:white;
+      }
+      .edition {
+        font:10px Arial,sans-serif;
+        letter-spacing:.17em;
+        color:#d5b08a;
+        text-align:right;
+        line-height:1.7;
+      }
+      /* Заголовок и переключатель языков */
+      .intro {
+        display:flex;
+        justify-content:space-between;
+        gap:30px;
+        align-items:end;
+        padding-top:64px;
+        padding-bottom:28px;
+      }
+      .intro h2 {
+        font-size:clamp(35px,5vw,56px);
+        font-weight:normal;
+        letter-spacing:-.04em;
+        margin:10px 0 0;
+      }
+      .label {
+        color:#8b4b38;
+      }
+      .intro p {
+        max-width:340px;
+        line-height:1.6;
+        font-size:14px;
+        color:#796557;
+        margin:0;
+      }
+      .controls {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:16px;
+        border-top:1px solid #a88c6d;
+        border-bottom:1px solid #a88c6d;
+        padding:13px 0;
+      }
+      .controls .label {
+        color:#7a604d;
+      }
+      .tabs {
+        display:flex;
+        gap:3px;
+        flex-wrap:wrap;
+      }
+      .tabs button {
+        border:0;
+        background:transparent;
+        color:#755d4d;
+        padding:12px 15px;
+        cursor:pointer;
+        font:700 10px Arial,sans-serif;
+        letter-spacing:.13em;
+        text-transform:uppercase;
+      }
+      .tabs button.active {
+        background:#702c28;
+        color:#fff1db;
+      }
+      .tabs button:focus-visible,.button:focus-visible {
+        outline:3px solid #bb8640;
+        outline-offset:3px;
+      }
+      /* Две колонки с текстом выступления */
+      .texts {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        padding:40px 0 75px;
+      }
+      .column {
+        padding:0 48px 0 0;
+      }
+      .column+ .column {
+        border-left:1px solid #b99f81;
+        padding:0 0 0 48px;
+      }
+      .heading {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding-bottom:24px;
+        border-bottom:1px solid #c7ae90;
+      }
+      .heading h3 {
+        margin:0;
+        font:700 12px Arial,sans-serif;
+        letter-spacing:.15em;
+        text-transform:uppercase;
+      }
+      .heading span {
+        font:11px Arial,sans-serif;
+        color:#987c65;
+      }
+      .copy {
+        font-size:18px;
+        line-height:1.8;
+      }
+      .copy p {
+        margin:25px 0;
+      }
+      .copy p:first-child:first-letter {
+        float:left;
+        font-size:68px;
+        line-height:.8;
+        padding:8px 10px 0 0;
+        color:#762e29;
+      }
+      .endquote {
+        font-size:clamp(27px,3.4vw,42px);
+        font-style:italic;
+        line-height:1.2;
+        color:#702c28;
+        border-top:1px solid #c7ae90;
+        padding-top:25px;
+      }
+      .texts.en .ru,.texts.ru .en {
+        display:none;
+      }
+      .texts.en,.texts.ru {
+        grid-template-columns:1fr;
+      }
+      .texts.en .column,.texts.ru .column {
+        max-width:800px;
+        border:0;
+        padding:0;
+      }
+      .footer {
+        background:#40211d;
+        color:#ddc8aa;
+      }
+      .footer .wrap {
+        padding-top:30px;
+        padding-bottom:30px;
+        display:flex;
+        justify-content:space-between;
+        gap:20px;
+        font:10px Arial,sans-serif;
+        letter-spacing:.12em;
+        text-transform:uppercase;
+      }
+      .footer span {
+        color:#b99c7b;
+      }
+      /* Адаптация для телефонов */
+      @media(max-width:700px) {
+        .hero .wrap {
+          padding-top:55px;
+          padding-bottom:50px;
+        }
+        .hero:after {
+          right:-350px;
+        }
+        .hero-bottom {
+          margin-top:38px;
+        }
+        /* Заголовок и переключатель языков */
+      .intro {
+          display:block;
+          padding-top:45px;
+        }
+        .intro p {
+          margin-top:18px;
+        }
+        .controls {
+          align-items:flex-start;
+          flex-direction:column;
+        }
+        /* Две колонки с текстом выступления */
+      .texts {
+          grid-template-columns:1fr;
+          padding:30px 0 55px;
+        }
+        .column {
+          padding:0;
+        }
+        .column+.column {
+          border-left:0;
+          border-top:1px solid #b99f81;
+          padding:40px 0 0;
+          margin-top:25px;
+        }
+        .copy {
+          font-size:17px;
+        }
+        .nav {
+          display:none;
+        }
+        .footer .wrap {
+          flex-direction:column;
+        }
+        .edition {
+          font-size:9px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <div class="brand">
+          THE MOMENT
+          <span style="color:#c49463">
+            ✦
+          </span>
+          2005
+        </div>
+        <div class="nav">
+          <a href="#speech">
+            Читать выступление ↓
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <div class="eyebrow">
+            Kanye West · Grammy Awards
+          </div>
+          <h1>
+            Это мой
+            <br>
+            <em>
+              момент.
+            </em>
+          </h1>
+          <p class="sub">
+            Речь о том, как важно ценить жизнь, благодарить тех, кто был рядом, и праздновать свои победы.
+          </p>
+          <div class="hero-bottom">
+            <a class="button" href="#speech">
+              Читать речь
+              <span>
+                ↘
+              </span>
+            </a>
+            <div class="edition">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="speech" class="wrap">
+        <div class="controls">
+          <div class="label">
+            Режим чтения
+          </div>
+          <div class="tabs" role="group" aria-label="Выбор языка">
+            <button class="active" data-view="both" aria-pressed="true">
+              Два языка
+            </button>
+            <button data-view="en" aria-pressed="false">
+              English
+            </button>
+            <button data-view="ru" aria-pressed="false">
+              Русский
+            </button>
+          </div>
+        </div>
+        <div class="texts" id="texts">
+          <!-- Оригинал речи: редактируйте текст внутри тегов <p>. -->
+        <article class="column en" lang="en">
+            <div class="heading">
+              <h3>
+                Оригинал
+                <span>
+                  / English
+                </span>
+              </h3>
+              <span>
+                01 — 02
+              </span>
+            </div>
+            <div class="copy">
+              <p>
+                Y'all might as well get the music ready, cause this finna take awhile.
+              </p>
+              <p>
+                When I had my accident, I found out at that moment nothing in life is promised except death. If you have the opportunity to play this game of life, you need to appreciate every moment. A lot of people don't appreciate their moment until it's passed. And then you gotta tell those Al Bundy stories, “You remember when I ….”
+              </p>
+              <p>
+                But right now is my time and my moment thanks to the fans, thanks to the accident, thanks to God, thanks to Roc-A-Fella — Jay Z, Dame Dash, Gee — my mother, Rhymefest, everyone that's helped me.
+              </p>
+              <p>
+                And I plan — I plan to celebrate. I plan to celebrate and scream and pop champagne every chance I get because I'm at the GRAMMYs, baby.
+              </p>
+              <p>
+                I know every — I know everybody asked me the question. They wanted to know, “What Kanye? I know he's gon' wild out and he's gon' do something crazy.” Everybody want to know what I'd do if I didn't win.
+              </p>
+              <p class="endquote">
+                I guess we'll never know.
+              </p>
+            </div>
+          </article>
+          <!-- Русский перевод: редактируйте текст внутри тегов <p>. -->
+        <article class="column ru">
+            <div class="heading">
+              <h3>
+                Перевод
+                <span>
+                  / Русский
+                </span>
+              </h3>
+              <span>
+                02 — 02
+              </span>
+            </div>
+            <div class="copy">
+              <p>
+                Можете уже готовить музыку, потому что я собираюсь говорить долго.
+              </p>
+              <p>
+                Когда я попал в аварию, я понял одну вещь: в жизни нам ничего не гарантировано, кроме смерти. И если у тебя есть возможность участвовать в этой игре под названием «жизнь», нужно ценить каждый момент. Многие начинают ценить такие моменты, только когда они уже прошли. А потом остаётся лишь, как Эл Банди, рассказывать истории из прошлого: «Помнишь, как я когда-то…»
+              </p>
+              <p>
+                Но сейчас — моё время. Это мой момент. И я благодарен за него своим фанатам, той аварии, Богу, Roc-A-Fella — Jay-Z, Дэйму Дэшу, Джи — моей маме, Rhymefest и всем, кто помогал мне на этом пути.
+              </p>
+              <p>
+                И я собираюсь праздновать. Я собираюсь праздновать, кричать от радости и открывать шампанское при каждом удобном случае, потому что я на «Грэмми», детка!
+              </p>
+              <p>
+                Я знаю, о чём все спрашивали. Все думали: «Что устроит Канье? Он ведь точно сорвётся и выкинет что-нибудь безумное». Все хотели знать, что бы я сделал, если бы не победил.
+              </p>
+              <p class="endquote">
+                Что ж… Думаю, мы этого никогда не узнаем.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <div>
+          THE MOMENT
+          <span>
+            ✦
+          </span>
+          KANYE WEST
+        </div>
+        <span>
+        </span>
+      </div>
+    </footer>
+    <script>
+        // Переключение между оригиналом, переводом и двумя языками.
+        const languageButtons = document.querySelectorAll('[data-view]');
+        const texts = document.getElementById('texts');
+      
+        languageButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            languageButtons.forEach((item) => {
+              const isSelected = item === button;
+              item.classList.toggle('active', isSelected);
+              item.setAttribute('aria-pressed', String(isSelected));
+            });
+      
+            const view = button.dataset.view;
+            texts.className = view === 'both' ? 'texts' : `texts ${view}`;
+          });
+        });
+    </script>
+  </body>
+</html>
